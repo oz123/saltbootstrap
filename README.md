@@ -15,6 +15,9 @@ A collection of scripts to bootstrap salt on Windows
   - Windows hosts which have a know Administrator user with know password.
   
 # Usage
+    
+Before you run the script, edit the file `minion.template`, the script will launch
+the minion with that template. 
   
     bootstrap_salt32bin.sh COMPANY-PC filer1\\public  filer1\\user pass
 
