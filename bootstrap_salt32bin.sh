@@ -45,7 +45,7 @@ winexe -U ${HOSTNAME}/Administrator //${HOSTNAME} \
    && cmd /c c:\salt\python27\pythonw.exe --version \
    && cmd /c c:\salt\python27\python.exe c:\temp\salt\distribute_setup.py \
    && cmd /c c:\salt\python27\python.exe c:\temp\salt\get-pip.py \
-   && cmd /c c:\salt\python27\pythonw.exe c:\temp\salt\setenv.py c:\salt\python27;c:\salt\python27\scripts  \
+   && cmd /c c:\salt\python27\pythonw.exe c:\temp\salt\setenv.py c:\\salt\\python27;c:\\salt\\python27\\scripts  \
    && cmd /c c:\salt\python27\Scripts\pip.exe install c:\temp\salt\PyYAML-3.10.tar.gz --log c:\salt\log\PyYAML_install.log \
    && cmd /c c:\salt\python27\Scripts\pip.exe install c:\temp\salt\Jinja2-2.6.tar.gz --log c:\salt\log\Jinja2_install.log \
    && echo Finished bootstrap stage 1  \

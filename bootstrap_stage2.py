@@ -23,7 +23,7 @@ def msiexec(executable):
 
 def easyinstall(executable,logname):
 	logname = open(logname,"w")
-	easyinst = sp.Popen("cmd /c easy_install "+executable+ " c:\\salt\\python27", cwd=r"c:\temp\salt", stdout = logname, stderr = logname)
+	easyinst = sp.Popen("cmd /c c:\\salt\\python27\\Scripts\\easy_install.exe "+executable+ " c:\\salt\\python27", cwd=r"c:\temp\salt", stdout = logname, stderr = logname)
 	easyinst.communicate()
 	
 install_log("vcredist_x86.exe /q", r"c:\salt\log\vclog.log")
@@ -35,5 +35,6 @@ msiexec(m2crypto)
 easyinstall("Cython-0.15.1.win32-py2.7.exe", "c:\salt\log\Cython.log")
 easyinstall("msgpack-python-0.1.12.win32-py2.7.exe", "c:\salt\log\msgpack.log")
 easyinstall("pywin32-216.win32-py2.7.exe", "c:\salt\log\pywin32.log")
+easyinstall("WMI-1.4.9.win32.exe", "c:\salt\log\WMIinstall.log")
 msiexec("""pycrypto-2.3.win32-py2.7.msi TARGETDIR="c:\salt\python27" /quiet /norestart /log c:\salt\log\pycryto.log ALLUSERS=1""")
 print "Success: Stage 2"
