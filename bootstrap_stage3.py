@@ -11,9 +11,9 @@ import shutil
 import subprocess as sp
 
 def install_log(executable, logname):
-	logname = open(logname,"w")
-	instcmd = sp.Popen("cmd /c "+executable, stdout = logname, stderr = logname, cwd=r"c:\temp\salt")
-	instcmd.communicate()
+    logname = open(logname,"w")
+    instcmd = sp.Popen("cmd /c "+executable, stdout = logname, stderr = logname, cwd=r"c:\temp\salt")
+    instcmd.communicate()
 
 
 #Some general firewall settings
@@ -24,9 +24,12 @@ install_log(pingback,"c:\\salt\\log\\netsh_ping_back.log")
 remote_mgmt='netsh advfirewall firewall set rule group="remote service management" new enable=yes'
 install_log(remote_mgmt,"c:\\salt\\log\\netsh_remote_mgmt.log")
 	
-	
-os.makedirs("c:\\salt\\conf\\pki")
-os.mkdir("c:\\salt\\sys\\")
+pkipath="c:\\salt\\conf\\pki"
+if not os.path.exists(pkipath):
+   os.makedirs(pkipath)
+saltsys="c:\\salt\\sys\\"
+if not os.path.exists(saltsys):
+   os.mkdir(saltsys)
 
 shutil.copy2("c:\\temp\\salt\\nssm.exe", "c:\\salt\\sys\\")
 shutil.copy2("c:\\temp\\salt\\minion.template", "c:\\salt\\conf\\minion")
