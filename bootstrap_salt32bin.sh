@@ -52,7 +52,7 @@ winexe -U ${HOSTNAME}/Administrator //${HOSTNAME} \
    && cmd /c c:\salt\python27\pythonw.exe c:\temp\salt\bootstrap_stage2.py \
    && echo Finish bootstrap stage 2 \
    && echo Installing SALT ... \
-   && cmd /c pc:\salt\python27\Scripts\pip.exe install c:\temp\salt\salt-0.10.4.tar.gz --log c:\salt\log\salt_install.log \
+   && cmd /c c:\salt\python27\Scripts\pip.exe install c:\temp\salt\salt-0.10.4.tar.gz --log c:\salt\log\salt_install.log \
    && echo Finished salt installation ... \
    && echo Starting stage 3, launching salt.. \
    && cmd /c c:\salt\python27\pythonw.exe c:\temp\salt\bootstrap_stage3.py"
