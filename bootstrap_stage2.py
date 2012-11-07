@@ -1,5 +1,12 @@
 """
 This script installs salt dependencies on windows 32 bit.
+
+This script is part of the win32 bootstrap for salt, 
+it does the final configuration and tuning of windows, and 
+starts the salt service
+
+This script was written by Oz Nahum <nahumoz@gmail.com>
+License: GPL
 """
 import sys
 import subprocess as sp
@@ -20,12 +27,13 @@ def easyinstall(executable,logname):
 	easyinst.communicate()
 	
 install_log("vcredist_x86.exe /q", r"c:\salt\log\vclog.log")
-#install_log("Win32OpenSSL-1_0_0e.exe /silent /verysilent /sp- /suppressmsgboxes", r"c:\salt\log\openssl.log")
-zeromq = """pyzmq-2.1.11.win32-py2.7.msi TARGETDIR="c:\salt\python27" /quiet /norestart /log c:\salt\log\pyzmq_install.log ALLUSERS=1"""
+install_log("Win32OpenSSL-1_0_0e.exe /silent /verysilent /sp- /suppressmsgboxes", r"c:\salt\log\openssl.log")
+zeromq = 'pyzmq-2.1.11.win32-py2.7.msi TARGETDIR="c:\salt\python27" /quiet /norestart /log c:\salt\log\pyzmq_install.log ALLUSERS=1'
 msiexec(zeromq)
-#m2crypto = r"M2Crypto-0.21.1.win32 /quiet /norestart /log c:\salt\log\m2crypto.log ALLUSERS=1"
-#msiexec(m2crypto)
+m2crypto = 'M2Crypto-0.21.1.win32-py2.7.msi  TARGETDIR="c:\salt\python27" /quiet /norestart /log c:\\salt\\log\\m2crypto.log ALLUSERS=1'
+msiexec(m2crypto)
 easyinstall("Cython-0.15.1.win32-py2.7.exe", "c:\salt\log\Cython.log")
 easyinstall("msgpack-python-0.1.12.win32-py2.7.exe", "c:\salt\log\msgpack.log")
 easyinstall("pywin32-216.win32-py2.7.exe", "c:\salt\log\pywin32.log")
 msiexec("""pycrypto-2.3.win32-py2.7.msi TARGETDIR="c:\salt\python27" /quiet /norestart /log c:\salt\log\pycryto.log ALLUSERS=1""")
+print "Success: Stage 2"
