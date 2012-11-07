@@ -8,6 +8,7 @@ License: GPL
 """
 import os
 import shutil
+import subprocess as sp
 
 def install_log(executable, logname):
 	logname = open(logname,"w")
@@ -24,7 +25,7 @@ remote_mgmt='netsh advfirewall firewall set rule group="remote service managemen
 install_log(remote_mgmt,"c:\\salt\\log\\netsh_remote_mgmt.log")
 	
 	
-os.mkdir("c:\\salt\\conf\\pki")
+os.makedirs("c:\\salt\\conf\\pki")
 os.mkdir("c:\\salt\\sys\\")
 
 shutil.copy2("c:\\temp\\salt\\nssm.exe", "c:\\salt\\sys\\")
