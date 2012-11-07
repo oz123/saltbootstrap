@@ -17,7 +17,7 @@ def install_log(executable, logname):
 
 #Some general firewall settings
 #Allows ping backs""
-pingback="netsh advfirewall firewall add rule name=”ALL ICMP V4" protocol=icmpv4:any,any dir=in action=allow"
+pingback='netsh advfirewall firewall add rule name="ALL ICMP V4" protocol=icmpv4:any,any dir=in action=allow'
 install_log(pingback,"c:\\salt\\log\\netsh_ping_back.log")
 #Allows remote management
 remote_mgmt='netsh advfirewall firewall set rule group="remote service management" new enable=yes'
